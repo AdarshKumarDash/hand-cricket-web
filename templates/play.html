@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play - Hand Cricket</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>{{ first_innings and 'First' or 'Second' }} Innings</h1>
+  <p>Batting: {{ batting }}</p>
+  <p>Your score: {{ user_score }} | Computer: {{ comp_score }}</p>
+  {% if target %}<p>Target: {{ target }}</p>{% endif %}
+  {% if result %}
+    <hr>
+    <p>You: {{ result.user_input }} | Computer: {{ result.computer_input }}</p>
+    {% if result.double_zero %}
+      <p>Both chose 0 – second chance!</p>
+      <form method="post" action="{{ url_for('zero') }}">
+        <label>Your second chance (1–2):<input name="second_user_input" type="number" min="1" max="2" required></label>
+        <button type="submit">Submit</button>
+      </form>
+    {% endif %}
+    {% if result.out %}<p><b>OUT!</b></p>{% endif %}
+    {% if result.runs %}<p>Scored: {{ result.runs }}</p>{% endif %}
+    <hr>
+  {% endif %}
+  <form method="post">
+    <label>Your choice (0–10):<input name="user_input" type="number" min="0" max="10" required></label>
+    <button type="submit">Play Turn</button>
+  </form>
+</body>
+</html>

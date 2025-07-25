@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>You won the toss!</h1>
+  <form method="post">
+    <label><input type="radio" name="choice" value="bat" required> Bat</label><br>
+    <label><input type="radio" name="choice" value="bowl" required> Bowl</label><br><br>
+    <button type="submit">Go</button>
+  </form>
+</body>
+</html>
