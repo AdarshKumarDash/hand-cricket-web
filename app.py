@@ -25,8 +25,6 @@ def choose():
         session['user_action'] = random.choice(['bat', 'bowl'])
     else:
         if request.method == 'POST':
-            print(request.form)
-
             session['user_action'] = request.form.get('choice')
             if session['user_action'] not in ['bat', 'bowl']:
                 return "Invalid choice!", 400
