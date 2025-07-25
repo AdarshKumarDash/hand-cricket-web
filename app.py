@@ -137,7 +137,7 @@ if __name__ == '__main__':
 def get_user_input(valid_choices):
     while True:
         try:
-            choice = int(input(f"Enter your choice {valid_choices}: "))
+            #choice = int(input(f"Enter your choice {valid_choices}: "))
             if choice in valid_choices:
                 return choice
             else:
@@ -147,7 +147,7 @@ def get_user_input(valid_choices):
 
 def get_user_odd_even():
     while True:
-        choice = input("Choose odd or even: ").strip().lower()
+        session['odd_even'] = request.form['odd_even']
         if choice in ['odd', 'even']:
             return choice
         print("Invalid choice. Please enter odd or even.")
@@ -157,11 +157,11 @@ def play_innings(batsman_name, bowler_name, target=None):
     while True:
         if batsman_name == "You":
             bowler = random.choice(list(range(0, 11)))
-            batsman = int(input("Enter your choice (0-10): "))
+            batsman = int(request.form['user_input'])
             print(f"{bowler_name} chose: {bowler}")
         else:
             batsman = random.choice(list(range(0, 11)))
-            bowler = int(input("Enter your choice (0-10): "))
+            bowler = int(request.form['user_input'])
             print(f"{batsman_name} chose: {batsman}")
 
         if batsman == 0 and bowler != 0:
@@ -202,7 +202,7 @@ def play_innings(batsman_name, bowler_name, target=None):
 def toss():
     print("Toss Time!")
     user_choice = get_user_odd_even()
-    user_num = int(input("Enter your choice (0-10): "))
+    session['user_num'] = int(request.form['user_num'])
     comp_num = random.choice(list(range(0, 11)))
     total = user_num + comp_num
     print(f"Computer chose: {comp_num}. Total = {total} ({'Even' if total % 2 == 0 else 'Odd'})")
@@ -212,7 +212,7 @@ def toss():
     if user_choice == result:
         print("You won the toss!")
         while True:
-            bat_or_bowl = input("Do you want to 'bat' or 'bowl' first? ").strip().lower()
+            session['user_action'] = request.form.get('choice')
             if bat_or_bowl in ['bat', 'bowl']:
                 return bat_or_bowl
             print("Invalid input. Enter 'bat' or 'bowl'.")
