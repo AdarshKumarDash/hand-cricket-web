@@ -51,7 +51,7 @@ def play():
         result['user_input']=u
         result['computer_input']=c
         batting=session['batting']
-        # double zero logic
+
         if u==0 and c==0:
             result['double_zero']=True
         elif u==0 and c!=0:
@@ -71,7 +71,7 @@ def play():
             else:
                 session['comp_score']+=runs
         session['last']=result
-        # Manage innings and check target
+
         if result.get('out'):
             if session['innings']==1:
                 session['innings']=2
