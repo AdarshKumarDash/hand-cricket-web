@@ -24,8 +24,9 @@
     <hr>
   {% endif %}
   <form method="post">
-    <label>Your choice (0–10):<input name="user_input" type="number" min="0" max="10" required></label>
-    <button type="submit">Play Turn</button>
+    <label for="user_input">Enter your choice (0-10):</label>
+    <input type="number" name="user_input" id="user_input" min="0" max="10" required>
+    <button type="submit">Submit</button>
   </form>
 </body>
 </html>

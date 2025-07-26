@@ -161,7 +161,7 @@ def play_innings(batsman_name, bowler_name, target=None):
             print(f"{bowler_name} chose: {bowler}")
         else:
             batsman = random.choice(list(range(0, 11)))
-            bowler = int(input("Enter your choice (0-10): "))
+            bowler = int(request.form['user_input'])
             print(f"{batsman_name} chose: {batsman}")
 
         if batsman == 0 and bowler != 0:
