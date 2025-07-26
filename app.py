@@ -134,7 +134,8 @@ if __name__ == '__main__':
 
 
 
-def get_user_input(valid_choices):
+
+"""def get_user_input(valid_choices):
     while True:
         try:
             choice = int(request.form.get('choice'))
@@ -253,3 +254,6 @@ elif user_score < computer_score:
     print("Computer wins!")
 else:
     print("It's a Tie!")
+
+
+"""
